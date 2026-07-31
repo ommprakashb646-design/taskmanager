@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+.dash {
+  --paper: #F7F7F4;
+  --ink: #1C2333;
+  --ink-muted: #5B6472;
+  --amber: #E8A33D;
+  --pine: #2F9E6E;
+  --clay: #D6524A;
+  --line: #E3E1D9;
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dash * { box-sizing: border-box; }
+
+.dash-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.dash-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.dash-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.dash-welcome {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.dash-logout {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.dash-logout:hover { border-color: var(--ink-muted); }
+
+.dash-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem clamp(1.5rem, 5vw, 2rem) 5rem;
+}
+
+.dash-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pine);
+  margin: 0 0 0.5rem;
+}
+
+.dash-heading h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 2rem;
+}
+
+/* --- Task creation form --- */
+
+.dash-form {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem 1.25rem 1.4rem;
+  margin-bottom: 2.5rem;
+}
+
+.dash-form-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.dash-form-row.secondary {
+  margin-top: 0.9rem;
+  align-items: center;
+}
+
+.dash-input, .dash-select {
+  border: none;
+  border-bottom: 1.5px solid var(--line);
+  background: transparent;
+  padding: 0.5rem 0.15rem;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.dash-input:focus, .dash-select:focus {
+  border-bottom-color: var(--amber);
+}
+
+.title-input { flex: 1.4; min-width: 180px; font-weight: 500; }
+.dash-form-row > .dash-input:not(.title-input) { flex: 1.6; min-width: 180px; }
+.date-input { flex: 0 0 150px; }
+.dash-select { flex: 0 0 160px; cursor: pointer; }
+
+.dash-submit {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.dash-submit:hover { background: #0f1420; }
+
+.dash-cancel {
+  background: none;
+  border: none;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dash-error {
+  background: #FBEAEA;
+  color: var(--clay);
+  font-size: 0.85rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.dash-status {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+/* --- Empty state --- */
+
+.dash-empty {
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.dash-empty-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem;
+}
+
+.dash-empty-sub {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* --- Task list --- */
+
+.dash-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dash-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  background: white;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.dash-item.priority-high { border-left-color: var(--clay); }
+.dash-item.priority-medium { border-left-color: var(--amber); }
+.dash-item.priority-low { border-left-color: var(--pine); }
+
+.dash-item.completed { opacity: 0.55; }
+.dash-item.completed strong { text-decoration: line-through; }
+
+.dash-check {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin-top: 0.1rem;
+  border-radius: 6px;
+  border: 1.5px solid var(--ink-muted);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.dash-item.completed .dash-check {
+  background: var(--pine);
+  border-color: var(--pine);
+}
+
+.dash-item.completed .dash-check::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.dash-item-body { flex: 1; }
+
+.dash-item-body strong {
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+.dash-item-body p {
+  margin: 0.25rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+}
+
+.dash-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.55rem;
+}
+
+.dash-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  color: white;
+}
+.badge-high { background: var(--clay); }
+.badge-medium { background: var(--amber); }
+.badge-low { background: var(--pine); }
+
+.dash-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.dash-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.dash-item-actions button {
+  border: none;
+  background: none;
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0.15rem 0;
+  text-align: right;
+}
+.dash-item-actions button:hover { color: var(--ink); }
+.dash-delete:hover { color: var(--clay) !important; }
+
+@media (max-width: 600px) {
+  .dash-form-row { flex-direction: column; }
+  .date-input, .dash-select { flex: 1; }
+  .dash-item { flex-wrap: wrap; }
+  .dash-item-actions { flex-direction: row; margin-left: auto; }
+}
+
+/* --- Loading skeleton --- */
+
+.dash-item.skeleton {
+  border-left-color: var(--line);
+}
+
+.skeleton-check {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 6px;
+  background: var(--line);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-line {
+  display: block;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--line);
+  margin-top: 0.5rem;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+.skeleton-line:first-child { margin-top: 0.1rem; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* --- Retry button on load error --- */
+
+.dash-retry {
+  margin-top: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+.dash-retry:hover { background: #0f1420; }
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-check, .skeleton-line { animation: none; }
+}
+
+/* --- Search / filter / sort toolbar --- */
+
+.dash-toolbar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.dash-search {
+  flex: 1;
+  min-width: 160px;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.88rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  outline: none;
+}
+.dash-search:focus { border-color: var(--amber); }
+
+.dash-filter {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--ink-muted);
+  cursor: pointer;
+  outline: none;
+}
+.dash-filter:focus { border-color: var(--amber); }
+
+.dash-clear {
+  background: none;
+  border: none;
+  color: var(--clay);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.4rem 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .dash-toolbar { flex-direction: column; align-items: stretch; }
+}

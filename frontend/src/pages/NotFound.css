@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@500&display=swap');
+
+.notfound {
+  min-height: 100vh;
+  background: #F7F7F4;
+  color: #1C2333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 2rem;
+}
+
+.notfound-code {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #D6524A;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+}
+
+.notfound h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0 0 0.75rem;
+}
+
+.notfound-sub {
+  color: #5B6472;
+  margin: 0 0 1.75rem;
+  max-width: 24rem;
+}
+
+.notfound-link {
+  background: #1C2333;
+  color: #F7F7F4;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.notfound-link:hover { background: #0f1420; }
