@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://127.0.0.1:8000/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
 
 const client = axios.create({ baseURL: BASE_URL });
 
+// Attach access token to every request
 client.interceptors.request.use((config) => {
   const access = localStorage.getItem('access');
   if (access) {
@@ -12,6 +13,7 @@ client.interceptors.request.use((config) => {
   return config;
 });
 
+// If access token expired (401), try to refresh it once, then retry the request
 client.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -25,7 +27,7 @@ client.interceptors.response.use(
           localStorage.setItem('access', res.data.access);
           originalRequest.headers.Authorization = `Bearer ${res.data.access}`;
           return client(originalRequest);
-        } catch (refreshError) {
+        } catch  {
           localStorage.removeItem('access');
           localStorage.removeItem('refresh');
           window.location.href = '/login';
