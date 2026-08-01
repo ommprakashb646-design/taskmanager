@@ -104,11 +104,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STORAGES = {
-    'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-    },
-}
+WHITENOISE_USE_FINDERS = True
 
 
 # --- CORS: which frontend origins may call this API ---
